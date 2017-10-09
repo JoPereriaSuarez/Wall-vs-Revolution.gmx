@@ -1,0 +1,40 @@
+if(instance_exists(player_01) || instance_exists(player_02)){
+    
+    display_set_gui_size(display_get_gui_width() / 2, display_get_gui_height() / 2);
+    
+    display_set_gui_maximise(1.4, 1.4, display_get_gui_width(), display_get_height()/2);     
+    //barra especial personajes
+    draw_sprite(spr_player_01_GUI,floor(player_01.special),-display_get_gui_width() * 0.195,-display_get_gui_height() * 0.36);
+    draw_sprite(spr_player_02_GUI,floor(player_02.special_control),display_get_gui_width() * 0.12,0);
+    
+    display_set_gui_maximise(1.2, 1.2, display_get_gui_width()/2, display_get_height()/2);   
+    //dibajamos la vida
+    draw_set_font(ft_lifes);
+    draw_set_colour(c_purple);
+    //Trump 108,113
+    draw_text(-display_get_gui_width() * 0.17,-display_get_gui_height() * 0.315,string(player_01.vida));
+    
+    //Fidel
+    draw_text(display_get_gui_width() * 0.192,display_get_gui_height() * 0.198,string(player_02.vida));
+       
+    draw_set_font(ft_round);
+    //240,10
+    draw_text(-display_get_gui_width() * 0.05,-display_get_gui_height() * 0.4,"ROUND: " + string(global.rounds));
+    
+    if(end_level == true){
+        display_set_gui_maximise(0.5, 0.5, display_get_gui_width() / 2, 0);   
+/*
+        draw_set_font(ft_round);
+        draw_set_colour(c_black);
+        draw_text(-display_get_gui_width() * 0.12,0,string(winner_name) + " HAS WON."); 
+        draw_text(-display_get_gui_width() * 0.235,40,"PRESS SPACE TO CONTINUE"); 
+*/      if(winner_name == "TRUMP")
+        {
+            draw_sprite(spr_wins_screem,1,0,0);
+        }
+        else
+        {
+            draw_sprite(spr_wins_screem,0,0,0);
+        }
+    }
+}
